@@ -1,12 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 vector<int> a;
-int x,n,l,r,mi,ans;
+int x,n,l,r,mid,ans;
 void bs(){
- l=1,r=a.size()-1;
- ans=0;
+ l=1,r=a.size()-1,ans=0;
 while(l<=r){
-    mi=(l+r)/2;
+    mid=(l+r)>>1;
      if(x>=a[mi]){
         ans=mi;
         l=mi+1;
@@ -15,7 +14,6 @@ while(l<=r){
         r=mi-1;
     }
 }
-  //  cout<<ans<<"\n";
     ans++;
     if(ans){
     if(x>=a[a.size()-1])
@@ -34,20 +32,6 @@ int main(){
     for(int i=1;i<n;i++){
         scanf("%d",&x);
         bs();
-    /*   for(int j=0;j<a.size();j++)
-        printf("%d ",a[j]);
-    printf("\n");*/
     }
     printf("%d ",n-a.size()+1);
-
-
-
 }
-/*
-      5
-      5
-      4
-      4
-      4
-      4 4
-*/
