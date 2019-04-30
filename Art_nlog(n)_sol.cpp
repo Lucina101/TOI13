@@ -22,27 +22,18 @@ long long get(int idx){
     }
     return sum;
 }
-int lifting(){
+int lifting(bool z){
     int pos=0;
     long long sum=0;
     for(int j=19;j>=0;j--){
-        if(pos+(1<<j)<=1000000&&sum+bit[pos+(1<<j)]<=t){
+        if(pos+(1<<j)<=1000000&&sum+bit[pos+(1<<j)]+z<=t){
             sum+=bit[pos+(1<<j)];
             pos+=(1<<j);
         }
     }
+    if(z) return get(pos+1)==t?pos+1:-1;
     return sum==t?pos:-1;
-}
-int lift(){
-    int pos=0;
-    long long sum=0;
-    for(int j=19;j>=0;j--){
-        if(pos+(1<<j)<=1000000&&sum+bit[pos+(1<<j)]<t){
-            sum+=bit[pos+(1<<j)];
-            pos+=(1<<j);
-        }
-    }
-    return get(pos+1)==t?pos+1:-1;
+
 }
 
 int main(){
@@ -59,10 +50,10 @@ int main(){
             ans+=last;
             continue;
         }
-        for(auto j:m[i]){
+        for(pair<int,int> j:m[i]){
             update(1000000-j.first+1,j.second);
         }
-        u=lift();v=lifting();
+        u=lifting(1);v=lifting(0);
         if(u==-1||v==-1){
             last=0;
         }
@@ -75,9 +66,3 @@ int main(){
     return 0;
 }
 
-/*
-3 3
-1 1 4 1
-2 2 2 2
-3 3 1 3
-*/
