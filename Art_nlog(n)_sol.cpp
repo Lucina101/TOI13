@@ -32,7 +32,6 @@ int lifting(){
         }
     }
     return sum==t?pos:-1;
-
 }
 int lift(){
     int pos=0;
@@ -45,7 +44,6 @@ int lift(){
     }
     return get(pos+1)==t?pos+1:-1;
 }
-
 
 int main(){
     scanf("%d%lld",&n,&t);
@@ -72,7 +70,6 @@ int main(){
             last=v-u+1;
             ans+=last;
         }
-
     }
     printf("%lld\n",ans);
     return 0;
