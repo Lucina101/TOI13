@@ -33,7 +33,6 @@ int lifting(bool z){
     }
     if(z) return get(pos+1)==t?pos+1:-1;
     return sum==t?pos:-1;
-
 }
 
 int main(){
@@ -50,7 +49,7 @@ int main(){
             ans+=last;
             continue;
         }
-        for(pair<int,int> j:m[i]){
+        for(auto j:m[i]){
             update(1000000-j.first+1,j.second);
         }
         u=lifting(1);v=lifting(0);
@@ -65,4 +64,3 @@ int main(){
     printf("%lld\n",ans);
     return 0;
 }
-
